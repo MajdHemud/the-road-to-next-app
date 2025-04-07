@@ -1,5 +1,5 @@
-import Link from 'next/link';
-import { ticketsPath } from '@/paths';
+import Link from "next/link";
+import { ticketsPath } from "@/paths";
 
 const HomePage = () => {
 	return (

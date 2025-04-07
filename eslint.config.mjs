@@ -20,7 +20,8 @@ const eslintConfig = [
 					groups: [['^\\u0000', '^@?\\w', '^[^.]', '^\\.']]
 				}
 			],
-			'simple-import-sort/exports': 'error'
+			'simple-import-sort/exports': 'error',
+			'max-len': ['error', { code: 80 }]
 		},
 		parserOptions: {
 			sourceType: 'module',

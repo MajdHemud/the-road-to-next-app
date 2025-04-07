@@ -21,7 +21,7 @@ const eslintConfig = [
 				}
 			],
 			'simple-import-sort/exports': 'error',
-			'max-len': ['error', { code: 80 }]
+			'max-len': ['error', { code: 90 }]
 		},
 		parserOptions: {
 			sourceType: 'module',

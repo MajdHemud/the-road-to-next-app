@@ -127,7 +127,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "/Users/ruwaiflick/Desktop/Next JS 2025/the-road-to-next-app/src/generated/prisma",
+      "value": "C:\\Users\\majdh\\OneDrive\\Desktop\\Next JS Projects 2025\\the-road-to-next-app\\src\\generated\\prisma",
       "fromEnvVar": null
     },
     "config": {
@@ -136,16 +136,16 @@ const config = {
     "binaryTargets": [
       {
         "fromEnvVar": null,
-        "value": "darwin",
+        "value": "windows",
         "native": true
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "/Users/ruwaiflick/Desktop/Next JS 2025/the-road-to-next-app/prisma/schema.prisma",
+    "sourceFilePath": "C:\\Users\\majdh\\OneDrive\\Desktop\\Next JS Projects 2025\\the-road-to-next-app\\prisma\\schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
-    "rootEnvPath": null,
+    "rootEnvPath": "../../../.env",
     "schemaEnvPath": "../../../.env"
   },
   "relativePath": "../../../prisma",

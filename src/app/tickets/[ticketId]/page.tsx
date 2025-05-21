@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 // import { Button } from "@/components/ui/button";
 import { TicketItem } from "@/features/ticket/components/ticket-item";
 import { getTicket } from "@/features/ticket/queries/get-ticket";
+// import { prisma } from "@/lib/prisma";
 // import { ticketsPath } from "@/paths";
 
 type TicketPageProps = {

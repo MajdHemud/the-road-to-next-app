@@ -4,7 +4,7 @@ import { CardCompact } from "@/components/card-compact";
 import { Heading } from "@/components/heading";
 import { Placeholder } from "@/components/placeholder";
 import { Spinner } from "@/components/spinner";
-import { TicketCreateForm } from "@/components/ticket-create-form";
+import { TicketCreateForm } from "@/features/ticket/components/ticket-create-form";
 import { TicketList } from "@/features/ticket/components/ticket-list";
 
 //export const revalidate = 30;

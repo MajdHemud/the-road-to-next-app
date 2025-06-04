@@ -1,10 +1,10 @@
 import { revalidatePath } from "next/cache";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
 import { prisma } from "@/lib/prisma";
 import { ticketsPath } from "@/paths";
-import { Button } from "./ui/button";
-import { Input } from "./ui/input";
-import { Label } from "./ui/label";
-import { Textarea } from "./ui/textarea";
 
 const TicketCreateForm = () => {
   const createTicket = async (formData: FormData) => {

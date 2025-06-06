@@ -2,6 +2,7 @@
 
 import { LucideLoaderCircle } from "lucide-react";
 import { useActionState } from "react";
+import { EMPTY_ACTION_STATE } from "@/components/form/utils/to-action-state";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -16,7 +17,7 @@ type TicketUpsertFormProps = {
 const TicketUpsertForm = ({ ticket }: TicketUpsertFormProps) => {
   const [actionState, action, isPending] = useActionState(
     upsertTicket.bind(null, ticket?.id),
-    { message: "" }
+    EMPTY_ACTION_STATE
   );
 
   return (

@@ -2,6 +2,8 @@
 
 import { LucideLoaderCircle } from "lucide-react";
 import { useActionState } from "react";
+import { FieldError } from "@/components/form/field-error";
+import { useActionFeedback } from "@/components/form/hooks/use-action-feedback";
 import { EMPTY_ACTION_STATE } from "@/components/form/utils/to-action-state";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -20,6 +22,17 @@ const TicketUpsertForm = ({ ticket }: TicketUpsertFormProps) => {
     EMPTY_ACTION_STATE
   );
 
+  useActionFeedback(actionState, {
+    onSuccess: ({ actionState }) => {
+      console.log(actionState.message);
+      //TODO handle success
+    },
+    onError: ({ actionState }) => {
+      console.log(actionState.message);
+      //TODO handle error
+    },
+  });
+
   return (
     <form action={action} className="flex flex-col gap-y-2">
       <Label htmlFor="title">Title</Label>
@@ -31,6 +44,7 @@ const TicketUpsertForm = ({ ticket }: TicketUpsertFormProps) => {
           (actionState.payload?.get("title") as string) ?? ticket?.title
         }
       />
+      <FieldError actionState={actionState} name="title" />
 
       <Label htmlFor="content">Content</Label>
       <Textarea
@@ -40,11 +54,11 @@ const TicketUpsertForm = ({ ticket }: TicketUpsertFormProps) => {
           (actionState.payload?.get("content") as string) ?? ticket?.content
         }
       />
+      <FieldError actionState={actionState} name="content" />
       <Button disabled={isPending} type="submit">
         {isPending && <LucideLoaderCircle className="w-4 h-4 animate-spin" />}
         {ticket ? "Edit" : "Create"}
       </Button>
-      {actionState.message}
     </form>
   );
 };

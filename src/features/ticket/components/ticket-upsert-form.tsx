@@ -2,9 +2,8 @@
 
 import { LucideLoaderCircle } from "lucide-react";
 import { useActionState } from "react";
-import { toast } from "sonner";
 import { FieldError } from "@/components/form/field-error";
-import { useActionFeedback } from "@/components/form/hooks/use-action-feedback";
+import { Form } from "@/components/form/forrm";
 import { EMPTY_ACTION_STATE } from "@/components/form/utils/to-action-state";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -23,21 +22,8 @@ const TicketUpsertForm = ({ ticket }: TicketUpsertFormProps) => {
     EMPTY_ACTION_STATE
   );
 
-  useActionFeedback(actionState, {
-    onSuccess: ({ actionState }) => {
-      if (actionState.message) {
-        toast.success(actionState.message);
-      }
-    },
-    onError: ({ actionState }) => {
-      if (actionState.message) {
-        toast.error(actionState.message);
-      }
-    },
-  });
-
   return (
-    <form action={action} className="flex flex-col gap-y-2">
+    <Form action={action} actionState={actionState}>
       <Label htmlFor="title">Title</Label>
       <Input
         id="title"
@@ -62,7 +48,7 @@ const TicketUpsertForm = ({ ticket }: TicketUpsertFormProps) => {
         {isPending && <LucideLoaderCircle className="w-4 h-4 animate-spin" />}
         {ticket ? "Edit" : "Create"}
       </Button>
-    </form>
+    </Form>
   );
 };
 

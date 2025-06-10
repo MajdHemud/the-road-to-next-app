@@ -12,6 +12,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Ticket } from "@/generated/prisma";
 import { fromCent } from "@/utils/currency";
 import { upsertTicket } from "../actions/upsert-ticket";
+import { DatePicker } from "@/components/date-picker";
 
 type TicketUpsertFormProps = {
   ticket?: Ticket;
@@ -48,10 +49,9 @@ const TicketUpsertForm = ({ ticket }: TicketUpsertFormProps) => {
       <div className="flex gap-x-2 mb-1">
         <div className="w-1/2">
           <Label htmlFor="deadline">Deadline</Label>
-          <Input
+          <DatePicker
             id="deadline"
             name="deadline"
-            type="date"
             defaultValue={
               (actionState.payload?.get("deadline") as string) ??
               ticket?.deadline

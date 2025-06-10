@@ -1,8 +1,11 @@
 "use client";
 
 import { LucideLoaderCircle } from "lucide-react";
-import { useActionState } from "react";
-import { DatePicker } from "@/components/date-picker";
+import { useActionState, useRef } from "react";
+import {
+  DatePicker,
+  ImperativeHandleFromDatePicker,
+} from "@/components/date-picker";
 import { FieldError } from "@/components/form/field-error";
 import { Form } from "@/components/form/forrm";
 import { EMPTY_ACTION_STATE } from "@/components/form/utils/to-action-state";
@@ -24,8 +27,11 @@ const TicketUpsertForm = ({ ticket }: TicketUpsertFormProps) => {
     EMPTY_ACTION_STATE
   );
 
+  const datePickerImperativeHandleRef =
+    useRef<ImperativeHandleFromDatePicker>(null);
+
   const handleSuccess = () => {
-    console.log("Success Handler");
+    datePickerImperativeHandleRef.current?.reset();
   };
 
   return (

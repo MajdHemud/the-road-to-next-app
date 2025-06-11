@@ -2,6 +2,7 @@
 
 import { LucideTrash } from "lucide-react";
 import React from "react";
+import { toast } from "sonner";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -12,6 +13,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Ticket, TicketStatus } from "@/generated/prisma";
+import { updateTicketStatus } from "../actions/update-ticket-status";
 import { TICKET_STATUS_LABELS } from "../constants";
 
 type TicketMoreMenuProps = {
@@ -28,7 +30,19 @@ const TicketMoreMenu = ({ ticket, trigger }: TicketMoreMenuProps) => {
   );
 
   const handleUpdateTicketStatus = async (value: string) => {
-    // TODO update ticket status
+    const promise = updateTicketStatus(ticket.id, value as TicketStatus);
+
+    toast.promise(promise, {
+      loading: "Updating status...",
+    });
+
+    const result = await promise;
+
+    if (result.status === "ERROR") {
+      toast.error(result.message);
+    } else if (result.status === "SUCCESS") {
+      toast.success(result.message);
+    }
   };
 
   const ticketStatusRadioGroupItems = (

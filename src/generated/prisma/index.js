@@ -26,7 +26,7 @@ const {
   Public,
   getRuntime,
   createParam,
-} = require('./runtime/library.js')
+} = require("./runtime/library.js")
 
 
 const Prisma = {}
@@ -81,46 +81,46 @@ Prisma.NullTypes = {
 
 
 
-  const path = require('path')
+  const path = require("path")
 
 /**
  * Enums
  */
 exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
-  ReadUncommitted: 'ReadUncommitted',
-  ReadCommitted: 'ReadCommitted',
-  RepeatableRead: 'RepeatableRead',
-  Serializable: 'Serializable'
+  ReadUncommitted: "ReadUncommitted",
+  ReadCommitted: "ReadCommitted",
+  RepeatableRead: "RepeatableRead",
+  Serializable: "Serializable"
 });
 
 exports.Prisma.TicketScalarFieldEnum = {
-  id: 'id',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt',
-  title: 'title',
-  content: 'content',
-  status: 'status',
-  deadline: 'deadline',
-  bounty: 'bounty'
+  id: "id",
+  createdAt: "createdAt",
+  updatedAt: "updatedAt",
+  title: "title",
+  content: "content",
+  status: "status",
+  deadline: "deadline",
+  bounty: "bounty"
 };
 
 exports.Prisma.SortOrder = {
-  asc: 'asc',
-  desc: 'desc'
+  asc: "asc",
+  desc: "desc"
 };
 
 exports.Prisma.QueryMode = {
-  default: 'default',
-  insensitive: 'insensitive'
+  default: "default",
+  insensitive: "insensitive"
 };
 exports.TicketStatus = exports.$Enums.TicketStatus = {
-  OPEN: 'OPEN',
-  IN_PROGRESS: 'IN_PROGRESS',
-  DONE: 'DONE'
+  OPEN: "OPEN",
+  IN_PROGRESS: "IN_PROGRESS",
+  DONE: "DONE"
 };
 
 exports.Prisma.ModelName = {
-  Ticket: 'Ticket'
+  Ticket: "Ticket"
 };
 /**
  * Create the Client
@@ -174,17 +174,17 @@ const config = {
   "copyEngine": true
 }
 
-const fs = require('fs')
+const fs = require("fs")
 
 config.dirname = __dirname
-if (!fs.existsSync(path.join(__dirname, 'schema.prisma'))) {
+if (!fs.existsSync(path.join(__dirname, "schema.prisma"))) {
   const alternativePaths = [
     "src/generated/prisma",
     "generated/prisma",
   ]
   
   const alternativePath = alternativePaths.find((altPath) => {
-    return fs.existsSync(path.join(process.cwd(), altPath, 'schema.prisma'))
+    return fs.existsSync(path.join(process.cwd(), altPath, "schema.prisma"))
   }) ?? alternativePaths[0]
 
   config.dirname = path.join(process.cwd(), alternativePath)
@@ -197,7 +197,7 @@ config.engineWasm = undefined
 config.compilerWasm = undefined
 
 
-const { warnEnvConflicts } = require('./runtime/library.js')
+const { warnEnvConflicts } = require("./runtime/library.js")
 
 warnEnvConflicts({
     rootEnvPath: config.relativeEnvPaths.rootEnvPath && path.resolve(config.dirname, config.relativeEnvPaths.rootEnvPath),

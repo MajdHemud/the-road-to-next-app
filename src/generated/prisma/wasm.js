@@ -11,7 +11,7 @@ const {
   Public,
   getRuntime,
   skip
-} = require('./runtime/index-browser.js')
+} = require("./runtime/index-browser.js")
 
 
 const Prisma = {}
@@ -114,40 +114,40 @@ Prisma.NullTypes = {
  */
 
 exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
-  ReadUncommitted: 'ReadUncommitted',
-  ReadCommitted: 'ReadCommitted',
-  RepeatableRead: 'RepeatableRead',
-  Serializable: 'Serializable'
+  ReadUncommitted: "ReadUncommitted",
+  ReadCommitted: "ReadCommitted",
+  RepeatableRead: "RepeatableRead",
+  Serializable: "Serializable"
 });
 
 exports.Prisma.TicketScalarFieldEnum = {
-  id: 'id',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt',
-  title: 'title',
-  content: 'content',
-  status: 'status',
-  deadline: 'deadline',
-  bounty: 'bounty'
+  id: "id",
+  createdAt: "createdAt",
+  updatedAt: "updatedAt",
+  title: "title",
+  content: "content",
+  status: "status",
+  deadline: "deadline",
+  bounty: "bounty"
 };
 
 exports.Prisma.SortOrder = {
-  asc: 'asc',
-  desc: 'desc'
+  asc: "asc",
+  desc: "desc"
 };
 
 exports.Prisma.QueryMode = {
-  default: 'default',
-  insensitive: 'insensitive'
+  default: "default",
+  insensitive: "insensitive"
 };
 exports.TicketStatus = exports.$Enums.TicketStatus = {
-  OPEN: 'OPEN',
-  IN_PROGRESS: 'IN_PROGRESS',
-  DONE: 'DONE'
+  OPEN: "OPEN",
+  IN_PROGRESS: "IN_PROGRESS",
+  DONE: "DONE"
 };
 
 exports.Prisma.ModelName = {
-  Ticket: 'Ticket'
+  Ticket: "Ticket"
 };
 
 /**
@@ -165,7 +165,7 @@ class PrismaClient {
 - Use Driver Adapters: https://pris.ly/d/driver-adapters
 `;
         } else {
-          message = 'PrismaClient is unable to run in this browser environment, or has been bundled for the browser (running in `' + runtime.prettyName + '`).'
+          message = "PrismaClient is unable to run in this browser environment, or has been bundled for the browser (running in `" + runtime.prettyName + "`)."
         }
 
         message += `

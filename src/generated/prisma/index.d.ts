@@ -3,7 +3,7 @@
  * Client
 **/
 
-import * as runtime from './runtime/library.js';
+import * as runtime from "./runtime/library.js";
 import $Types = runtime.Types // general types
 import $Public = runtime.Types.Public
 import $Utils = runtime.Types.Utils
@@ -24,9 +24,9 @@ export type Ticket = $Result.DefaultSelection<Prisma.$TicketPayload>
  */
 export namespace $Enums {
   export const TicketStatus: {
-  OPEN: 'OPEN',
-  IN_PROGRESS: 'IN_PROGRESS',
-  DONE: 'DONE'
+  OPEN: "OPEN",
+  IN_PROGRESS: "IN_PROGRESS",
+  DONE: "DONE"
 };
 
 export type TicketStatus = (typeof TicketStatus)[keyof typeof TicketStatus]
@@ -53,10 +53,10 @@ export const TicketStatus: typeof $Enums.TicketStatus
  */
 export class PrismaClient<
   ClientOptions extends Prisma.PrismaClientOptions = Prisma.PrismaClientOptions,
-  U = 'log' extends keyof ClientOptions ? ClientOptions['log'] extends Array<Prisma.LogLevel | Prisma.LogDefinition> ? Prisma.GetEvents<ClientOptions['log']> : never : never,
+  U = "log" extends keyof ClientOptions ? ClientOptions["log"] extends Array<Prisma.LogLevel | Prisma.LogDefinition> ? Prisma.GetEvents<ClientOptions["log"]> : never : never,
   ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs
 > {
-  [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['other'] }
+  [K: symbol]: { types: Prisma.TypeMap<ExtArgs>["other"] }
 
     /**
    * ##  Prisma Client ʲˢ
@@ -74,7 +74,7 @@ export class PrismaClient<
    */
 
   constructor(optionsArg ?: Prisma.Subset<ClientOptions, Prisma.PrismaClientOptions>);
-  $on<V extends U>(eventType: V, callback: (event: V extends 'query' ? Prisma.QueryEvent : Prisma.LogEvent) => void): PrismaClient;
+  $on<V extends U>(eventType: V, callback: (event: V extends "query" ? Prisma.QueryEvent : Prisma.LogEvent) => void): PrismaClient;
 
   /**
    * Connect with the database
@@ -371,9 +371,9 @@ export namespace Prisma {
     [key in keyof T]: key extends keyof U ? T[key] : never
   } &
     (T extends SelectAndInclude
-      ? 'Please either choose `select` or `include`.'
+      ? "Please either choose `select` or `include`."
       : T extends SelectAndOmit
-        ? 'Please either choose `select` or `omit`.'
+        ? "Please either choose `select` or `omit`."
         : {})
 
   /**
@@ -407,7 +407,7 @@ export namespace Prisma {
   ? False
   : T extends Uint8Array
   ? False
-  : T extends BigInt
+  : T extends bigint
   ? False
   : T extends object
   ? True
@@ -568,13 +568,13 @@ export namespace Prisma {
 
   type FieldPaths<
     T,
-    U = Omit<T, '_avg' | '_sum' | '_count' | '_min' | '_max'>
+    U = Omit<T, "_avg" | "_sum" | "_count" | "_min" | "_max">
   > = IsObject<T> extends True ? U : T
 
   type GetHavingFields<T> = {
     [K in keyof T]: Or<
-      Or<Extends<'OR', K>, Extends<'AND', K>>,
-      Extends<'NOT', K>
+      Or<Extends<"OR", K>, Extends<"AND", K>>,
+      Extends<"NOT", K>
     > extends True
       ? // infer is only needed to not hit TS limit
         // based on the brilliant idea of Pierre-Antoine Mills
@@ -611,7 +611,7 @@ export namespace Prisma {
 
 
   export const ModelName: {
-    Ticket: 'Ticket'
+    Ticket: "Ticket"
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -622,7 +622,7 @@ export namespace Prisma {
   }
 
   interface TypeMapCb<ClientOptions = {}> extends $Utils.Fn<{extArgs: $Extensions.InternalArgs }, $Utils.Record<string, any>> {
-    returns: Prisma.TypeMap<this['params']['extArgs'], ClientOptions extends { omit: infer OmitOptions } ? OmitOptions : {}>
+    returns: Prisma.TypeMap<this["params"]["extArgs"], ClientOptions extends { omit: infer OmitOptions } ? OmitOptions : {}>
   }
 
   export type TypeMap<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> = {
@@ -734,7 +734,7 @@ export namespace Prisma {
   }
   export const defineExtension: $Extensions.ExtendsHook<"define", Prisma.TypeMapCb, $Extensions.DefaultArgs>
   export type DefaultPrismaClient = PrismaClient
-  export type ErrorFormat = 'pretty' | 'colorless' | 'minimal'
+  export type ErrorFormat = "pretty" | "colorless" | "minimal"
   export interface PrismaClientOptions {
     /**
      * Overwrites the datasource url from your schema.prisma file
@@ -796,13 +796,13 @@ export namespace Prisma {
   }
 
   /* Types for Logging */
-  export type LogLevel = 'info' | 'query' | 'warn' | 'error'
+  export type LogLevel = "info" | "query" | "warn" | "error"
   export type LogDefinition = {
     level: LogLevel
-    emit: 'stdout' | 'event'
+    emit: "stdout" | "event"
   }
 
-  export type GetLogType<T extends LogLevel | LogDefinition> = T extends LogDefinition ? T['emit'] extends 'event' ? T['level'] : never : never
+  export type GetLogType<T extends LogLevel | LogDefinition> = T extends LogDefinition ? T["emit"] extends "event" ? T["level"] : never : never
   export type GetEvents<T extends any> = T extends Array<LogLevel | LogDefinition> ?
     GetLogType<T[0]> | GetLogType<T[1]> | GetLogType<T[2]> | GetLogType<T[3]>
     : never
@@ -824,27 +824,27 @@ export namespace Prisma {
 
 
   export type PrismaAction =
-    | 'findUnique'
-    | 'findUniqueOrThrow'
-    | 'findMany'
-    | 'findFirst'
-    | 'findFirstOrThrow'
-    | 'create'
-    | 'createMany'
-    | 'createManyAndReturn'
-    | 'update'
-    | 'updateMany'
-    | 'updateManyAndReturn'
-    | 'upsert'
-    | 'delete'
-    | 'deleteMany'
-    | 'executeRaw'
-    | 'queryRaw'
-    | 'aggregate'
-    | 'count'
-    | 'runCommandRaw'
-    | 'findRaw'
-    | 'groupBy'
+    | "findUnique"
+    | "findUniqueOrThrow"
+    | "findMany"
+    | "findFirst"
+    | "findFirstOrThrow"
+    | "create"
+    | "createMany"
+    | "createManyAndReturn"
+    | "update"
+    | "updateMany"
+    | "updateManyAndReturn"
+    | "upsert"
+    | "delete"
+    | "deleteMany"
+    | "executeRaw"
+    | "queryRaw"
+    | "aggregate"
+    | "count"
+    | "runCommandRaw"
+    | "findRaw"
+    | "groupBy"
 
   /**
    * These options are being passed into the middleware as "params"
@@ -1046,7 +1046,7 @@ export namespace Prisma {
   }
 
   export type GetTicketAggregateType<T extends TicketAggregateArgs> = {
-        [P in keyof T & keyof AggregateTicket]: P extends '_count' | 'count'
+        [P in keyof T & keyof AggregateTicket]: P extends "_count" | "count"
       ? T[P] extends true
         ? number
         : GetScalarType<T[P], AggregateTicket[P]>
@@ -1088,9 +1088,9 @@ export namespace Prisma {
 
   type GetTicketGroupByPayload<T extends TicketGroupByArgs> = Prisma.PrismaPromise<
     Array<
-      PickEnumerable<TicketGroupByOutputType, T['by']> &
+      PickEnumerable<TicketGroupByOutputType, T["by"]> &
         {
-          [P in ((keyof T) & (keyof TicketGroupByOutputType))]: P extends '_count'
+          [P in ((keyof T) & (keyof TicketGroupByOutputType))]: P extends "_count"
             ? T[P] extends boolean
               ? number
               : GetScalarType<T[P], TicketGroupByOutputType[P]>
@@ -1165,12 +1165,12 @@ export namespace Prisma {
   type TicketGetPayload<S extends boolean | null | undefined | TicketDefaultArgs> = $Result.GetResult<Prisma.$TicketPayload, S>
 
   type TicketCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<TicketFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+    Omit<TicketFindManyArgs, "select" | "include" | "distinct" | "omit"> & {
       select?: TicketCountAggregateInputType | true
     }
 
   export interface TicketDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Ticket'], meta: { name: 'Ticket' } }
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>["model"]["Ticket"], meta: { name: "Ticket" } }
     /**
      * Find zero or one Ticket that matches the filter.
      * @param {TicketFindUniqueArgs} args - Arguments to find a Ticket
@@ -1429,10 +1429,10 @@ export namespace Prisma {
     count<T extends TicketCountArgs>(
       args?: Subset<T, TicketCountArgs>,
     ): Prisma.PrismaPromise<
-      T extends $Utils.Record<'select', any>
-        ? T['select'] extends true
+      T extends $Utils.Record<"select", any>
+        ? T["select"] extends true
           ? number
-          : GetScalarType<T['select'], TicketCountAggregateOutputType>
+          : GetScalarType<T["select"], TicketCountAggregateOutputType>
         : number
     >
 
@@ -1483,20 +1483,20 @@ export namespace Prisma {
     groupBy<
       T extends TicketGroupByArgs,
       HasSelectOrTake extends Or<
-        Extends<'skip', Keys<T>>,
-        Extends<'take', Keys<T>>
+        Extends<"skip", Keys<T>>,
+        Extends<"take", Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: TicketGroupByArgs['orderBy'] }
-        : { orderBy?: TicketGroupByArgs['orderBy'] },
-      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
-      ByFields extends MaybeTupleToUnion<T['by']>,
+        ? { orderBy: TicketGroupByArgs["orderBy"] }
+        : { orderBy?: TicketGroupByArgs["orderBy"] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T["orderBy"]>>>,
+      ByFields extends MaybeTupleToUnion<T["by"]>,
       ByValid extends Has<ByFields, OrderFields>,
-      HavingFields extends GetHavingFields<T['having']>,
+      HavingFields extends GetHavingFields<T["having"]>,
       HavingValid extends Has<ByFields, HavingFields>,
-      ByEmpty extends T['by'] extends never[] ? True : False,
+      ByEmpty extends T["by"] extends never[] ? True : False,
       InputErrors extends ByEmpty extends True
-      ? `Error: "by" must not be empty.`
+      ? "Error: \"by\" must not be empty."
       : HavingValid extends False
       ? {
           [P in HavingFields]: P extends ByFields
@@ -1505,13 +1505,13 @@ export namespace Prisma {
             ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
             : [
                 Error,
-                'Field ',
+                "Field ",
                 P,
-                ` in "having" needs to be provided in "by"`,
+                " in \"having\" needs to be provided in \"by\"",
               ]
         }[HavingFields]
-      : 'take' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
+      : "take" extends Keys<T>
+      ? "orderBy" extends Keys<T>
         ? ByValid extends True
           ? {}
           : {
@@ -1519,9 +1519,9 @@ export namespace Prisma {
                 ? never
                 : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
             }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
-      : 'skip' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
+        : "Error: If you provide \"take\", you also need to provide \"orderBy\""
+      : "skip" extends Keys<T>
+      ? "orderBy" extends Keys<T>
         ? ByValid extends True
           ? {}
           : {
@@ -1529,7 +1529,7 @@ export namespace Prisma {
                 ? never
                 : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
             }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+        : "Error: If you provide \"skip\", you also need to provide \"orderBy\""
       : ByValid extends True
       ? {}
       : {
@@ -1581,14 +1581,14 @@ export namespace Prisma {
    * Fields of the Ticket model
    */
   interface TicketFieldRefs {
-    readonly id: FieldRef<"Ticket", 'String'>
-    readonly createdAt: FieldRef<"Ticket", 'DateTime'>
-    readonly updatedAt: FieldRef<"Ticket", 'DateTime'>
-    readonly title: FieldRef<"Ticket", 'String'>
-    readonly content: FieldRef<"Ticket", 'String'>
-    readonly status: FieldRef<"Ticket", 'TicketStatus'>
-    readonly deadline: FieldRef<"Ticket", 'String'>
-    readonly bounty: FieldRef<"Ticket", 'Int'>
+    readonly id: FieldRef<"Ticket", "String">
+    readonly createdAt: FieldRef<"Ticket", "DateTime">
+    readonly updatedAt: FieldRef<"Ticket", "DateTime">
+    readonly title: FieldRef<"Ticket", "String">
+    readonly content: FieldRef<"Ticket", "String">
+    readonly status: FieldRef<"Ticket", "TicketStatus">
+    readonly deadline: FieldRef<"Ticket", "String">
+    readonly bounty: FieldRef<"Ticket", "Int">
   }
     
 
@@ -1960,40 +1960,40 @@ export namespace Prisma {
    */
 
   export const TransactionIsolationLevel: {
-    ReadUncommitted: 'ReadUncommitted',
-    ReadCommitted: 'ReadCommitted',
-    RepeatableRead: 'RepeatableRead',
-    Serializable: 'Serializable'
+    ReadUncommitted: "ReadUncommitted",
+    ReadCommitted: "ReadCommitted",
+    RepeatableRead: "RepeatableRead",
+    Serializable: "Serializable"
   };
 
   export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel]
 
 
   export const TicketScalarFieldEnum: {
-    id: 'id',
-    createdAt: 'createdAt',
-    updatedAt: 'updatedAt',
-    title: 'title',
-    content: 'content',
-    status: 'status',
-    deadline: 'deadline',
-    bounty: 'bounty'
+    id: "id",
+    createdAt: "createdAt",
+    updatedAt: "updatedAt",
+    title: "title",
+    content: "content",
+    status: "status",
+    deadline: "deadline",
+    bounty: "bounty"
   };
 
   export type TicketScalarFieldEnum = (typeof TicketScalarFieldEnum)[keyof typeof TicketScalarFieldEnum]
 
 
   export const SortOrder: {
-    asc: 'asc',
-    desc: 'desc'
+    asc: "asc",
+    desc: "desc"
   };
 
   export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder]
 
 
   export const QueryMode: {
-    default: 'default',
-    insensitive: 'insensitive'
+    default: "default",
+    insensitive: "insensitive"
   };
 
   export type QueryMode = (typeof QueryMode)[keyof typeof QueryMode]
@@ -2007,70 +2007,70 @@ export namespace Prisma {
   /**
    * Reference to a field of type 'String'
    */
-  export type StringFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'String'>
+  export type StringFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, "String">
     
 
 
   /**
    * Reference to a field of type 'String[]'
    */
-  export type ListStringFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'String[]'>
+  export type ListStringFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, "String[]">
     
 
 
   /**
    * Reference to a field of type 'DateTime'
    */
-  export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime'>
+  export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, "DateTime">
     
 
 
   /**
    * Reference to a field of type 'DateTime[]'
    */
-  export type ListDateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime[]'>
+  export type ListDateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, "DateTime[]">
     
 
 
   /**
    * Reference to a field of type 'TicketStatus'
    */
-  export type EnumTicketStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'TicketStatus'>
+  export type EnumTicketStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, "TicketStatus">
     
 
 
   /**
    * Reference to a field of type 'TicketStatus[]'
    */
-  export type ListEnumTicketStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'TicketStatus[]'>
+  export type ListEnumTicketStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, "TicketStatus[]">
     
 
 
   /**
    * Reference to a field of type 'Int'
    */
-  export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
+  export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, "Int">
     
 
 
   /**
    * Reference to a field of type 'Int[]'
    */
-  export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
+  export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, "Int[]">
     
 
 
   /**
    * Reference to a field of type 'Float'
    */
-  export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
+  export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, "Float">
     
 
 
   /**
    * Reference to a field of type 'Float[]'
    */
-  export type ListFloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float[]'>
+  export type ListFloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, "Float[]">
     
   /**
    * Deep Input Types
